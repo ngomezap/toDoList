@@ -1,0 +1,10 @@
+.postIt{
+    background-color: beige;
+    width: 20%;
+    font-weight: bold;
+}
+
+.postIt div{
+    font-weight: 100;
+}
+
