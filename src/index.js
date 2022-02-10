@@ -1,4 +1,6 @@
-import { displayPostIts } from "./displayWhiteboard";
+import { controller } from "./controller";
+import { displayWhiteboard } from "./displayWhiteboard";
 import './style.css'
 
-displayPostIts();
+
+controller();

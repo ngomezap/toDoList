@@ -1,17 +1,22 @@
 import { whiteboard } from "./createPostIt";
 
-const displayPostIts = function(){
+const displayWhiteboard = function(){
+    const whiteBoard = document.createElement('div');
+    whiteBoard.setAttribute('id', 'whiteboard');
+    document.body.appendChild(whiteBoard);
     whiteboard.listOfPostIts.forEach(e => {
         const div = document.createElement('div');
         div.innerText = e.name;
         div.classList.add('postIt');
+        const list = document.createElement('ul');
+        div.appendChild(list);
         e.listOfTasks.forEach(lt => {
-            const subdiv = document.createElement('div');
-            subdiv.innerText = lt.text;
-            div.appendChild(subdiv);
+            const task = document.createElement('li');
+            task.innerText = lt.text;
+            list.appendChild(task);
         })
-        document.body.appendChild(div);
+        whiteBoard.appendChild(div);
     })
 }
 
-export {displayPostIts}
+export {displayWhiteboard}
