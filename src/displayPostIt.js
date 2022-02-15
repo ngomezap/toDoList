@@ -1,9 +1,8 @@
 import { whiteboard } from "./createPostIt";
+import clear from './clear';
 
 const displayPostIt = function(){
     clear();
-    
-    console.log(this)
     const postItName = this.firstChild.nodeValue;
     whiteboard.listOfPostIts.forEach((e) => {
         if (e.name === postItName){
@@ -14,10 +13,6 @@ const displayPostIt = function(){
     })
 }
 
-const clear = function(){
-    document.body.childNodes.forEach(node => {
-        node.remove();
-    })
-}
+
 
 export {displayPostIt}
