@@ -31,18 +31,31 @@ export default function displayAddPostIt(){
     const btnAddTask = document.createElement('button');
     btnAddTask.innerText = "Add Task";
     btnAddTask.addEventListener('click', () =>{
+
+        removeEmptyTasks();
         const newTask = createTask(counter);
         tasksContainer.appendChild(newTask.taskCont);
         counter ++;
+    });
+
+    //Button Send PostIt
+    const btnStickPostIt = document.createElement('button');
+    btnStickPostIt.innerText = "StickPostIt";
+    btnStickPostIt.addEventListener('click', () =>{
+        
     });
 
     //Append all
     formContainer.appendChild(titleContainer);
     formContainer.appendChild(tasksContainer);
     formContainer.appendChild(btnAddTask);
+    formContainer.appendChild(btnStickPostIt);
     document.body.appendChild(formContainer);
 }
 
+
+//This function if a task creator that returns a 'div'
+//with all the tasks added to the postIt
 
 function createTask(counter){
     //Task container
@@ -73,4 +86,15 @@ function createTask(counter){
 
 function removeTask(e){
     e.target.parentNode.remove();  
+}
+
+function removeEmptyTasks(){
+    /*Check that every task has text on it when
+    adding a new task. If so, remove the empty ones*/
+    const tC = [...document.getElementById('tasksContainer').childNodes]
+    tC.forEach((t) => {
+        if([...t.childNodes].at(1).value.length === 0){
+            t.remove();
+        }
+    })
 }
