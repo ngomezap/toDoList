@@ -26,6 +26,7 @@ const displayAddPostIt = function(){
     const addTitleLabel = document.createElement('label');
     addTitle.setAttribute('type', 'text');
     addTitle.setAttribute('id', 'addTitle');
+    addTitle.setAttribute('placeholder', 'Title');
     addTitleLabel.setAttribute('for', 'addTitle');
     addTitleLabel.innerText = "Title";
     titleContainer.appendChild(addTitleLabel);
@@ -83,7 +84,8 @@ function createTask(counter){
 
     //Remove task button
     const btnRmvTask = document.createElement('button');
-    btnRmvTask.innerText = "Delete";
+    btnRmvTask.innerText = "X";
+    btnRmvTask.classList.add('btnDelete');
     btnRmvTask.addEventListener('click', removeTask);
 
 
