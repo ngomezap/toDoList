@@ -18,14 +18,72 @@ nav button{
 
 /*Whiteboard*/
 
-#whiteboard{
+.wbTop{
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(199, 194, 194);
+}
+
+.wbTopCorner{
+    width: 10%;
+    height: 60px;
+    background-color: grey;
+    border-radius: 10px;
+}
+
+.wbBottomCorner{
+    width: 10%;
+    height: 60px;
+    background-color: grey;
+    border-radius: 10px;
+}
+
+#wbCenter{
+    display: flex;
+    height: 350px;
+    justify-content: space-between;
+}
+
+#canvas{
+    padding: 20px;
+    flex: 1;
     display: flex;
     gap: 10px;
     width: 65%;
     margin-left: auto;
     margin-right: auto;
-    border: double 5px black;
     height: 70%;
+}
+
+.wbLateral{
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: rgb(199, 194, 194);
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wbLateralTop,
+.wbLateralBottom{
+    width: 60px;
+    height: 15%;
+    align-self: center;
+    background-color: grey;
+    border-radius: 10px;
+}
+
+.wbLateralTop{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.wbLateralBottom{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .postIt{
