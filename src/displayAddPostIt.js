@@ -35,6 +35,7 @@ const displayAddPostIt = function(){
     //Button Add Task
     const btnAddTask = document.createElement('button');
     btnAddTask.innerText = "Add Task";
+    btnAddTask.setAttribute('id', 'btnAddTask');
     btnAddTask.addEventListener('click', () =>{
 
         removeEmptyTasks(tasksContainer);
@@ -46,8 +47,16 @@ const displayAddPostIt = function(){
     //Button Send PostIt
     const btnStickPostIt = document.createElement('button');
     btnStickPostIt.innerText = "StickPostIt";
+    btnStickPostIt.setAttribute('id', 'btnStickPostIt');
     btnStickPostIt.addEventListener('click', () =>{
+
+        //Not stick post-it in case title and tasks are empty
+        if(getFinalTasks().tasks.length === 0 && addTitle.value.length === 0){
+            return;
+        }
+
         const postIt = postItCreator(addTitle.value);
+        
         getFinalTasks().tasks.forEach(t => {
             postIt.addTask(taskCreator(t));
         })
