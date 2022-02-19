@@ -1,11 +1,13 @@
 
-const taskCreator = (text, type) => {return {text, type}}
+const taskCreator = (text) => {return {text}}
+
 
 const task1 = taskCreator("Hacer palomitas", "Check");
 const task2 = taskCreator("Elegir peliculas", "Check");
 const task3 = taskCreator("Comprar bebida", "Check");
 
 const task4 = taskCreator("Forrar libros cole", "OrderedList");
+
 
 const postItCreator = function (name){
     const listOfTasks = [];
@@ -18,7 +20,11 @@ const postItCreator = function (name){
 }
 
 
+
+
+
 const postIt1 = postItCreator("Noche de peli");
+
 const postIt2 = postItCreator("Cosas colegio Eduardo");
 
 postIt1.addTask(task1);
@@ -48,4 +54,5 @@ whiteboard.stickPostIt(postIt1);
 whiteboard.stickPostIt(postIt2);
 whiteboard.showPostIts();
 
-export {whiteboard}
+
+export {whiteboard, taskCreator, postItCreator}

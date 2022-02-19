@@ -1,6 +1,6 @@
 import { displayWhiteboard } from "./displayWhiteboard"
 import { displayPostIt } from "./displayPostIt"
-import displayAddPostIt from "./displayAddPostIt";
+import { displayAddPostIt } from "./displayAddPostIt";
 import clear from './clear';
 
 const controller = function(){

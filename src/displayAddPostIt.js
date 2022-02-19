@@ -1,6 +1,10 @@
+import { controller } from "./controller";
+import clear from './clear';
+import { taskCreator } from "./createPostIt";
+import { postItCreator } from "./createPostIt";
+import { whiteboard } from "./createPostIt";
 
-
-export default function displayAddPostIt(){
+const displayAddPostIt = function(){
 
     //Number of tasks counter
     let counter = 0;
@@ -32,7 +36,7 @@ export default function displayAddPostIt(){
     btnAddTask.innerText = "Add Task";
     btnAddTask.addEventListener('click', () =>{
 
-        removeEmptyTasks();
+        removeEmptyTasks(tasksContainer);
         const newTask = createTask(counter);
         tasksContainer.appendChild(newTask.taskCont);
         counter ++;
@@ -42,7 +46,13 @@ export default function displayAddPostIt(){
     const btnStickPostIt = document.createElement('button');
     btnStickPostIt.innerText = "StickPostIt";
     btnStickPostIt.addEventListener('click', () =>{
-        
+        const postIt = postItCreator(addTitle.value);
+        getFinalTasks().tasks.forEach(t => {
+            postIt.addTask(taskCreator(t));
+        })
+        whiteboard.stickPostIt(postIt);
+        clear();
+        controller();
     });
 
     //Append all
@@ -88,13 +98,29 @@ function removeTask(e){
     e.target.parentNode.remove();  
 }
 
-function removeEmptyTasks(){
+function removeEmptyTasks(tasksC){
     /*Check that every task has text on it when
     adding a new task. If so, remove the empty ones*/
-    const tC = [...document.getElementById('tasksContainer').childNodes]
+    const tC = [...tasksC.childNodes]
     tC.forEach((t) => {
         if([...t.childNodes].at(1).value.length === 0){
             t.remove();
         }
     })
 }
+
+function getFinalTasks(){
+    const tasks = []; //Array of tasks to send
+    const tC = document.getElementById('tasksContainer');
+    const result = [...tC.childNodes].filter((t) => {
+        return [...t.childNodes].at(1).value.length > 0;
+    })
+    result.forEach((e) => {
+        if([...e.childNodes].at(1).value.length > 0){
+            tasks.push([...e.childNodes].at(1).value);
+        }
+    })
+    return {tasks};
+}
+
+export {displayAddPostIt, getFinalTasks}
