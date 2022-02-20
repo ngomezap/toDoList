@@ -6,16 +6,31 @@ const displayWhiteboard = function(){
 
     document.body.appendChild(whiteBoard);
     whiteboard.listOfPostIts.forEach(e => {
+        //Post It container
         const div = document.createElement('div');
-        div.innerText = e.name;
         div.classList.add('postIt');
+
+        //Post It title
+        const title = document.createElement('h3');
+        title.innerText = e.name;
+        div.appendChild(title)
+        
+        //Post It task container
+        const tkCont = document.createElement('div');
+        tkCont.setAttribute('id', 'tkCont');
+
+        //List of Tasks
         const list = document.createElement('ul');
-        div.appendChild(list);
+        tkCont.appendChild(list);
+        div.appendChild(tkCont);
+
         e.listOfTasks.forEach(lt => {
             const task = document.createElement('li');
             task.innerText = lt.text;
             list.appendChild(task);
         });
+
+        //Stick Post It to Canvas
         [...whiteBoard.childNodes].forEach((e) => {
             [...e.childNodes].forEach((n) => {
                 if(n.id === "canvas"){

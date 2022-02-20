@@ -5,8 +5,7 @@ const displayPostIt = function(e){
     clear();
     
     whiteboard.listOfPostIts.forEach(postIt => {
-        if(postIt.name === this.firstChild.nodeValue){
-            
+        if(postIt.name === this.firstChild.innerText){
             const container = document.createElement('div');
             container.setAttribute('id', 'PView');
             const title = document.createElement('div');
