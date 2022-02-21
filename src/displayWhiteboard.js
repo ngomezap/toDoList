@@ -5,13 +5,14 @@ const displayWhiteboard = function(){
     const whiteBoard = designWhiteBoard().wb;
 
     document.body.appendChild(whiteBoard);
+
     whiteboard.listOfPostIts.forEach(e => {
         //Post It container
         const div = document.createElement('div');
         div.classList.add('postIt');
 
         //Post It title
-        const title = document.createElement('h3');
+        const title = document.createElement('h5');
         title.innerText = e.name;
         div.appendChild(title)
         
@@ -20,6 +21,7 @@ const displayWhiteboard = function(){
         tkCont.setAttribute('id', 'tkCont');
 
         //List of Tasks
+        /*
         const list = document.createElement('ul');
         tkCont.appendChild(list);
         div.appendChild(tkCont);
@@ -29,7 +31,7 @@ const displayWhiteboard = function(){
             task.innerText = lt.text;
             list.appendChild(task);
         });
-
+        */
         //Stick Post It to Canvas
         [...whiteBoard.childNodes].forEach((e) => {
             [...e.childNodes].forEach((n) => {

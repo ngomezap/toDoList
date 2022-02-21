@@ -5,6 +5,7 @@ import clear from './clear';
 
 const controller = function(){
     //Display the whiteboard by default
+    
     displayWhiteboard();
 
     //Create Listeners
