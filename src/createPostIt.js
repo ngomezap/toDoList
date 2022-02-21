@@ -54,7 +54,13 @@ const whiteboard = (function(){
 
     
     const removePostIt = function(postIt){
-        listOfPostIts = listOfPostIts.filter(e => e !== postIt);
+        listOfPostIts.splice(listOfPostIts.findIndex(e => e === postIt),1);
+        
+        //It's necessary to remove them from LocalStorage
+        window.localStorage.removeItem(`p${postIt.id}`);
+        for(let i = 1; i <= window.localStorage.length; i++){
+            window.localStorage.removeItem(`t${postIt.id}-${i}`)
+        }
     }
     const showPostIts = function(){
         listOfPostIts.forEach(e => console.log(e));
